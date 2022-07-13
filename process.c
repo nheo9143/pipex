@@ -11,8 +11,19 @@
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <fcntl.h>
 
-void	outfile_process(char **files, char *cmds, int *fd, char **ev)
+static void	ft_open_file(char *file, int *fd, int option)
+{
+	if (option == 'w')
+		*fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	else if (option == 'r')
+		*fd = open(file, O_RDONLY);
+	if (*fd < 0)
+		ft_error(file);
+}
+
+static void	outfile_process(char **files, char *cmds, int *fd, char **ev)
 {
 	int		outfile_fd;
 	char	*file_path;
@@ -30,7 +41,7 @@ void	outfile_process(char **files, char *cmds, int *fd, char **ev)
 	ft_error("execve");
 }
 
-void	infile_process(char **files, char *cmds, int *fd, char *ev[])
+static void	infile_process(char **files, char *cmds, int *fd, char *ev[])
 {
 	int		infile_fd;
 	char	*file_path;
@@ -48,7 +59,7 @@ void	infile_process(char **files, char *cmds, int *fd, char *ev[])
 	ft_error("execve");
 }
 
-void	wait_process(int pipe_num)
+static void	wait_process(int pipe_num)
 {
 	while (pipe_num--)
 		wait(NULL);

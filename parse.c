@@ -43,10 +43,8 @@ char	**get_cmds(int ac, char *av[])
 
 char	*get_path(char *ev[])
 {
-	int		i;
 	char	*path;
 
-	i = 0;
 	while (*ev)
 	{
 		if (ft_strncmp(*ev, "PATH=", 5) == 0)
@@ -85,14 +83,4 @@ char	*get_file_path(char *ev[], char *cmd)
 	if (!result)
 		ft_error(cmd);
 	return (result);
-}
-
-void	ft_open_file(char *file, int *fd, int option)
-{
-	if (option == 'w')
-		*fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	else if (option == 'r')
-		*fd = open(file, O_RDONLY);
-	if (*fd < 0)
-		ft_error(file);
 }

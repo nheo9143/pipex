@@ -19,7 +19,7 @@ char	*ft_strtrim(char const *s)
 
 	i = 0;
 	while (s[i] && s[i] != ' ' && s[i] != '\n' && s[i] != '\t'
-		|| s[i] == '\r' || s[i] == '\v' || s[i] == '\f')
+		&& s[i] != '\r' && s[i] != '\v' && s[i] != '\f')
 		i++;
 	ptr = malloc(sizeof(char) * i + 1);
 	if (!ptr)

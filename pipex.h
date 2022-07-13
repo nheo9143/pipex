@@ -31,5 +31,9 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s);
 void	ft_error(char *str);
+char	**get_files(int ac, char *av[]);
+char	**get_cmds(int ac, char *av[]);
+char	*get_file_path(char *ev[], char *cmd);
+void	pipex(char **files, char **cmds, char *ev[], int pipe_num);
 
 #endif
