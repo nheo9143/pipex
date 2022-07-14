@@ -56,7 +56,7 @@ static void	infile_process(char **files, char *cmds, int *fd, char *ev[])
 	options = ft_split(cmds, " \t\v\r\f\n");
 	file_path = get_file_path(ev, options[0]);
 	execve(file_path, options, ev);
-	ft_error("execve");
+	ft_error("exeve");
 }
 
 static void	wait_process(int pipe_num)

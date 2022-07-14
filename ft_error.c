@@ -18,3 +18,11 @@ void	ft_error(char *str)
 	perror(str);
 	exit(1);
 }
+
+void	ft_error_cmd_not_found(char *cmd)
+{
+	write(2, "command not found: ", ft_strlen("command not found: "));
+	write(2, cmd, ft_strlen(cmd));
+	write(2, "\n", 1);
+	exit(1);
+}

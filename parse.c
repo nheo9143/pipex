@@ -67,6 +67,8 @@ char	*get_file_path(char *ev[], char *cmd)
 	char	*result;
 
 	i = -1;
+	if (access(cmd, F_OK) == 0)
+		return (cmd);
 	pathes = ft_split(get_path(ev), ":");
 	result = NULL;
 	while (pathes[++i])
@@ -81,6 +83,6 @@ char	*get_file_path(char *ev[], char *cmd)
 	}
 	free(pathes);
 	if (!result)
-		ft_error(cmd);
+		ft_error_cmd_not_found(cmd);
 	return (result);
 }
